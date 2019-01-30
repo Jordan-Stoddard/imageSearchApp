@@ -1,3 +1,8 @@
+This is a simple app to test the ability to use a user entered search term and receive images back from the unsplash api.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
