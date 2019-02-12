@@ -1,28 +1,31 @@
 import React from "react";
-import unsplash from '../api/unsplash.js'
+import estated from '../api/estated.js'
 import SearchBar from "./SearchBar";
-import ImageList from './ImageList'
+import Axios from "axios";
+// import ImageList from './ImageList'
+Axios.withCredentials = true;
 
 
 
 class App extends React.Component {
   state = {images: []}
 
-  onSearchSubmit = async term => {
-    const response = await unsplash.get(`/search/photos`, {
-      params: { query: term },
-    })
-    this.setState({images: response.data.results})
+  onSearchSubmit = (address, city, state, zipcode) => {
+    estated.get(`property/v3?token=Jn46WhDWzk8gsYFHRPNzYzoOpiQHp4&address=${address}&city=${city}&state=${state}&zipcode=${zipcode}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   };
 
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSearchSubmit={this.onSearchSubmit} />
-        <ImageList images={this.state.images}/>
+        {/* <ImageList images={this.state.images}/> */}
       </div>
     );
   }
 }
 
 export default App;
+
+  
